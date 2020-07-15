@@ -43,7 +43,7 @@ class ExceptionTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final int expectedResult = Integer.MAX_VALUE;
+        final int expectedResult = 0;
         // --end-->
 
         assertEquals(expectedResult, confusedResult);
@@ -53,14 +53,13 @@ class ExceptionTest {
     @Test
     void should_use_the_try_pattern() {
         ClosableStateReference closableStateReference = new ClosableStateReference();
-        try (MyClosableType closable = new MyClosableType(closableStateReference))
-        {
+        try (MyClosableType closable = new MyClosableType(closableStateReference)) {
             assertFalse(closable.isClosed());
         }
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final Optional<Boolean> expected = Optional.empty();
+        final Optional<Boolean> expected = Optional.of(true);
         // --end-->
 
         assertEquals(expected.get(), closableStateReference.isClosed());
@@ -81,7 +80,7 @@ class ExceptionTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String[] expected = {};
+        final String[] expected = {"ClosableWithException.close","ClosableWithoutException.close"};
         // --end-->
 
         assertArrayEquals(
